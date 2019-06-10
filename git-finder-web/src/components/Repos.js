@@ -1,9 +1,14 @@
 import React from "react";
+import { ListItem, ListItemText} from "@material-ui/core";
 
 const Repos = props => {
     return(
         <ul>
-           {props.repos.map(repo => <li key={repo.id}>{repo.name}</li>)}
+           {props.repos.map(repo => (
+                <ListItem key={repo.id}>
+                    <ListItemText primary={repo.name} secondary={repo.description}/>
+                </ListItem>)
+            )}
         </ul>       
     )
 }

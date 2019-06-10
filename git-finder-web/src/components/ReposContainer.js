@@ -40,6 +40,7 @@ class ReposContainer extends React.Component {
                         onChange={this.inputHandler} 
                         placeholder = "Digite o nome do usuário"
                     />
+                    
                 </form>
 
                 <Repos repos={this.state.repos}/>
