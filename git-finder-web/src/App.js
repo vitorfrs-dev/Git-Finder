@@ -1,12 +1,14 @@
 import React from 'react';
 import ReposContainer from './components/ReposContainer';
 import Navbar from './components/Navbar';
+import FavoriteReposContainer from './components/FavoriteReposContainer';
 
 function App() {
   return (
     <div>
-      <ReposContainer />
-      <Navbar />
+       <Navbar />
+        <ReposContainer />
+        <FavoriteReposContainer />
     </div>
     
   );
