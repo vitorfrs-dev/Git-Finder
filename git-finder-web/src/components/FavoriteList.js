@@ -8,8 +8,10 @@ class FavoriteList extends React.Component {
         return(
             <div>
                 {this.props.f_repos.map(repo => (
-                    <RepoCard 
-                    key={repo.id} 
+                    <RepoCard
+                    remove
+                    key={repo.id}
+                    id={repo.id} 
                     name={repo.name} 
                     stars={repo.stargazers_count}
                     forks={repo.forks}

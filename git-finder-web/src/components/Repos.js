@@ -10,8 +10,10 @@ const Repos = props => {
                 //     <ListItemText primary={repo.name} secondary={repo.description}/>
                 // </ListItem>
 
-                <RepoCard 
-                    key={repo.id} 
+                <RepoCard
+                    data={repo} 
+                    key={repo.id}
+                    id={repo.id}
                     name={repo.name} 
                     stars={repo.stargazers_count}
                     forks={repo.forks}

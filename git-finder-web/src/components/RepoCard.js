@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography, Button } from '@material-ui/core';
+import { AddToFavorites, RemoveFavorites } from './github services/GithubFavoritos';
 
 class RepoCard extends React.Component {
     
@@ -24,7 +25,16 @@ class RepoCard extends React.Component {
                     <Typography varian="body2">{this.props.desc}</Typography>
                     <Typography>Forks: {this.props.forks}</Typography>
                     <Typography>Stars: {this.props.stars}</Typography>
-                    <Button>Add Favoritos</Button>
+                    
+                    {!this.props.remove && <Button onClick={() => {
+                        AddToFavorites(this.props.data)
+                    }}>Add Favoritos</Button>}
+
+                    {this.props.remove && <Button onClick={() => {
+                        RemoveFavorites(this.props.id);
+                    }}>Excluir</Button>}
+
+
                 </CardContent>
 
             </Card>
