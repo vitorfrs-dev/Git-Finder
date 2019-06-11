@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListItem } from '@material-ui/core';
+import RepoCard from './RepoCard';
 
 class FavoriteList extends React.Component { 
    
@@ -7,7 +8,13 @@ class FavoriteList extends React.Component {
         return(
             <div>
                 {this.props.f_repos.map(repo => (
-                    <ListItem key={repo.id}>{repo.name} </ListItem>
+                    <RepoCard 
+                    key={repo.id} 
+                    name={repo.name} 
+                    stars={repo.stargazers_count}
+                    forks={repo.forks}
+                    desc={repo.description}
+                />
                 ))}
             </div>
         );

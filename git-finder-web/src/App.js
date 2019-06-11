@@ -1,9 +1,8 @@
 import React from 'react';
-import ReposContainer from './components/ReposContainer';
+import './index.css';
 import Navbar from './components/Navbar';
-import FavoriteReposContainer from './components/FavoriteReposContainer';
-import { Button } from '@material-ui/core';
 import ViewContainer from './components/ViewContainer';
+import RepoCard from './components/RepoCard'
 
 function App() {
   

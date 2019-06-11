@@ -24,10 +24,10 @@ class ViewContainer extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{marginTop: 50}}>
                 <div>
-                    <Button onClick={this.changeView}>
-                        Ver {this.state.view == 'search'? 'favoritos' : 'Repositórios'}
+                    <Button variant="outlined" color="primary" onClick={this.changeView}>
+                        Ver {this.state.view === 'search'? 'favoritos' : 'Repositórios'}
                     </Button>
                 </div>
 
