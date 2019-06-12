@@ -1,12 +1,12 @@
 import React from 'react';
-import { ListItem } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import RepoCard from './RepoCard';
 
 class FavoriteList extends React.Component { 
    
     render() {
         return(
-            <div>
+            <Grid container spacing={2}>
                 {this.props.f_repos.map(repo => (
                     <RepoCard
                     remove
@@ -18,7 +18,7 @@ class FavoriteList extends React.Component {
                     desc={repo.description}
                 />
                 ))}
-            </div>
+            </Grid>
         );
     }
 }

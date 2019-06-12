@@ -1,10 +1,10 @@
 import React from "react";
-import { ListItem, ListItemText} from "@material-ui/core";
+import { Grid} from "@material-ui/core";
 import RepoCard from './RepoCard'
 
 const Repos = props => {
     return(
-        <ul>
+        <Grid container spacing={2}>
            {props.repos.map(repo => (
                 // <ListItem key={repo.id}>
                 //     <ListItemText primary={repo.name} secondary={repo.description}/>
@@ -22,7 +22,7 @@ const Repos = props => {
                 
                 )
             )}
-        </ul>       
+        </Grid>       
     )
 }
 

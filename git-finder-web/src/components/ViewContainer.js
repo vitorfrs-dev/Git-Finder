@@ -1,7 +1,7 @@
 import React from 'react';
 import ReposContainer from './ReposContainer';
 import FavoriteReposContainer from './FavoriteReposContainer';
-import { Button } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 
 
 class ViewContainer extends React.Component {
@@ -24,8 +24,9 @@ class ViewContainer extends React.Component {
 
     render() {
         return (
+            <Container>
             <div style={{marginTop: 50}}>
-                <div>
+                <div style={{textAlign:'center'}}>
                     <Button variant="outlined" color="primary" onClick={this.changeView}>
                         Ver {this.state.view === 'search'? 'favoritos' : 'Repositórios'}
                     </Button>
@@ -34,6 +35,7 @@ class ViewContainer extends React.Component {
                 {this.state.view === 'search' && <ReposContainer />}
                 {this.state.view === 'favorite' && <FavoriteReposContainer />}
             </div>
+            </Container>
         );
     }
 }

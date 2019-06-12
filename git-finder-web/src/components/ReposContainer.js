@@ -32,20 +32,21 @@ class ReposContainer extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Repositórios</h1>
-                <form action='#' onSubmit={this.submitHandler}>
-                    <input 
-                        type="text"
-                        onChange={this.inputHandler} 
-                        placeholder = "Digite o nome do usuário"
-                    />
-                    
-                </form>
 
-                <Repos repos={this.state.repos}/>
+                <div>
+                    <h1>Repositórios</h1>
+                    <form action='#' onSubmit={this.submitHandler}>
+                        <input 
+                            type="text"
+                            onChange={this.inputHandler} 
+                            placeholder = "Digite o nome do usuário"
+                        />
+                        
+                    </form>
 
-            </div>
+                    <Repos repos={this.state.repos}/>
+
+                </div>
         );
     }
 }

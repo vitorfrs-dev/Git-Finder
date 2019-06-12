@@ -1,43 +1,35 @@
 import React from 'react';
-import { Card, CardContent, Typography, Button } from '@material-ui/core';
+import { Grid, Paper, Typography} from '@material-ui/core';
 import { AddToFavorites, RemoveFavorites } from './github services/GithubFavoritos';
+
+const style = {
+    padding: 20
+}
 
 class RepoCard extends React.Component {
     
 
     render(){
 
-        const classes = () => {
-            const card = {
-                width: '300px',
-                marginTop: '1em',
-                float: 'left'
-            }
-        }
-
         return (
-            <Card  style={{
-                width: '300px',
-                marginTop: '1em'
-            }}>
-                <CardContent>
-                    <Typography gutterBottom variant="h5">{this.props.name}</Typography>
-                    <Typography varian="body2">{this.props.desc}</Typography>
-                    <Typography>Forks: {this.props.forks}</Typography>
-                    <Typography>Stars: {this.props.stars}</Typography>
-                    
-                    {!this.props.remove && <Button onClick={() => {
-                        AddToFavorites(this.props.data)
-                    }}>Add Favoritos</Button>}
+            
+            <Grid item sm={4}>
+                 <Paper style={style}>
+                    <Typography variant="h5" gutterBottom>{this.props.name}</Typography>
+                    <Typography gutterBottom>
+                        {this.props.desc}
+                    </Typography>
+                    <Grid container>
+                        <Grid item sm>
+                            Forks: {this.props.forks}
+                        </Grid>
+                        <Grid item sm>
+                            Stars: {this.props.stars}
+                        </Grid>
+                    </Grid>
+                </Paper>
+            </Grid>
 
-                    {this.props.remove && <Button onClick={() => {
-                        RemoveFavorites(this.props.id);
-                    }}>Excluir</Button>}
-
-
-                </CardContent>
-
-            </Card>
         );
     }
 
