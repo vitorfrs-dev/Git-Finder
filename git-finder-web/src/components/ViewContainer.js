@@ -8,17 +8,14 @@ class ViewContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: 'search'
+            view: true
         }
         this.changeView = this.changeView.bind(this);
     }
 
     changeView() {
-
-        let newView = this.state.view === 'search' ? 'favorite': 'search';
-
         this.setState({
-            view: newView
+            view: !this.state.view
         })
     }
 
@@ -32,8 +29,8 @@ class ViewContainer extends React.Component {
                     </Button>
                 </div>
 
-                {this.state.view === 'search' && <ReposContainer />}
-                {this.state.view === 'favorite' && <FavoriteReposContainer />}
+                {this.state.view  && <ReposContainer />}
+                {!this.state.view  && <FavoriteReposContainer />}
             </div>
             </Container>
         );
