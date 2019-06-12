@@ -33,8 +33,13 @@ class RepoCard extends React.Component {
                         </Grid>
                     </Grid>
 
-                    {!this.props.remove && <Button>add aos favoritos</Button>}
-                    {this.props.remove && <Button>Excluir</Button>}
+                    {!this.props.remove && <Button onClick={()=> {
+                        AddToFavorites(this.props.data).then(()=>{alert('Adicionado aos favoritos')})
+                    }}>add aos favoritos</Button>}
+
+                    {this.props.remove && <Button onClick={() =>{
+                        RemoveFavorites(this.props.id).then(() => {alert('Removido dos favoritos')})
+                    }}>Excluir</Button>}
                 </Paper>
             </Grid>
 
