@@ -1,6 +1,7 @@
 import React from 'react';
 import { fetchRepos } from './github services/GithubRepos';
 import Repos from './Repos';
+import { Typography, TextField } from '@material-ui/core'
 
 class ReposContainer extends React.Component {
 
@@ -27,20 +28,49 @@ class ReposContainer extends React.Component {
         fetchRepos(this.state.username)
         .then(res => {
             this.setState({repos:res.data})
-        });
+        })
+        .catch(() => {
+            this.setState({repos: []})
+        }); 
+
     }
 
     render() {
+
+        const style = {
+            inputHolder: {
+                width: '100%',
+                maxWidth: 600,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: 30,
+                marginBottom: 30
+            },
+
+            mainTitle: {
+                textAlign: 'center',
+                textTransform: 'uppercase',
+                marginTop: 30,
+                marginBottom: 30
+            }
+        }
         return (
 
                 <div>
-                    <h1>Repositórios</h1>
+                    <div style={style.mainTitle}>
+                        <Typography variant="h5">Repositórios</Typography>
+                    </div>
+
                     <form action='#' onSubmit={this.submitHandler}>
-                        <input 
-                            type="text"
-                            onChange={this.inputHandler} 
-                            placeholder = "Digite o nome do usuário"
-                        />
+                        
+                        <div style ={style.inputHolder}>
+                            <TextField
+                                fullWidth
+                                variant="outlined"
+                                onChange={this.inputHandler} 
+                                placeholder = "Digite o nome do usuário"
+                            />
+                        </div>
                         
                     </form>
 

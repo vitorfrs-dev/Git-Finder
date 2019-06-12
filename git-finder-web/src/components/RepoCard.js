@@ -1,9 +1,10 @@
 import React from 'react';
-import { Grid, Paper, Typography} from '@material-ui/core';
+import { Grid, Paper, Typography, Button} from '@material-ui/core';
 import { AddToFavorites, RemoveFavorites } from './github services/GithubFavoritos';
 
 const style = {
-    padding: 20
+    padding: 20,
+    display: 'block'
 }
 
 class RepoCard extends React.Component {
@@ -13,20 +14,27 @@ class RepoCard extends React.Component {
 
         return (
             
-            <Grid item sm={4}>
+            <Grid item sm={6}>
                  <Paper style={style}>
-                    <Typography variant="h5" gutterBottom>{this.props.name}</Typography>
+                    <Typography variant="h6" gutterBottom>{this.props.name}</Typography>
                     <Typography gutterBottom>
                         {this.props.desc}
                     </Typography>
                     <Grid container>
                         <Grid item sm>
-                            Forks: {this.props.forks}
+                            <Typography>    
+                                <i className="fas fa-code-branch"></i> {this.props.forks}
+                            </Typography>
                         </Grid>
                         <Grid item sm>
-                            Stars: {this.props.stars}
+                            <Typography>
+                                <i className="fas fa-star"></i> {this.props.stars}
+                            </Typography>
                         </Grid>
                     </Grid>
+
+                    {!this.props.remove && <Button>add aos favoritos</Button>}
+                    {this.props.remove && <Button>Excluir</Button>}
                 </Paper>
             </Grid>
 
