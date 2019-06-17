@@ -25,7 +25,7 @@ class ViewContainer extends React.Component {
             <div style={{marginTop: 50}}>
                 <div style={{textAlign:'center'}}>
                     <Button variant="outlined" color="primary" onClick={this.changeView}>
-                        Ver {this.state.view === 'search'? 'favoritos' : 'Repositórios'}
+                        Ver {this.state.view ? 'favoritos' : 'Repositórios'}
                     </Button>
                 </div>
 
