@@ -27,7 +27,8 @@ class GitApp extends React.Component {
     }
 
     addToFavorite(data) {
-        axios.post('http://localhost:3001/favorites', data)
+        console.log(data);
+        axios.post('https://gitapp-5d5d5.firebaseio.com/favorites.json', data)
         .then(() => {
             alert('Adicionado aos favoritos');
         });
@@ -59,7 +60,7 @@ class GitApp extends React.Component {
                         desc={repo.description}
                         stars={repo.stargazers_count}
                         forks={repo.forks}
-                        data={repo.data}
+                        data={repo}
                         onAddToFavorite = {this.addToFavorite}
                     />)}
                 </View>

@@ -21,14 +21,15 @@ class Favorites extends React.Component {
     }
 
     requestFavortite() {
-        axios.get('http://192.168.100.145:3001/favorites')
+        axios.get('https://gitapp-5d5d5.firebaseio.com/favorites.json')
         .then(res => {
-            this.setState({favorites: res.data})
+            // this.setState({favorites: res.data})
+            console.log(res);
         })
     }
 
     deleteFavorite(id) {
-        axios.delete('http://localhost:3001/favorites/' + id)
+        axios.delete('https://gitapp-5d5d5.firebaseio.com/favorites.json/' + id)
         .then(() => {
             requestFavortite();
         });
