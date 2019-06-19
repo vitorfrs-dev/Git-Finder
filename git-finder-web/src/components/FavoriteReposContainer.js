@@ -52,8 +52,6 @@ class FavoriteReposContainer extends React.Component {
                     <Typography variant="h5">Repositórios Favoritos</Typography>
                 </div>
                     
-                {/* <FavoriteList f_repos={this.state.favoriteRepos}/> */}
-
                 <Grid container spacing={2}>
                     {this.state.favoriteRepos.map(repo => (
                         <RepoCard
