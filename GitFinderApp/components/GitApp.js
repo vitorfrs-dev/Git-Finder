@@ -2,13 +2,15 @@ import React from 'react';
 import {StyleSheet, Text, TextInput, View, ScrollView, Button} from 'react-native';
 import axios from 'axios';
 import Repo from './Repo';
+import GitNotFound from './GitNotFound';
 
 class GitApp extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            repos: []
+            repos: [],
+            notFound: false
         }
 
         this.handleInput = this.handleInput.bind(this);
@@ -21,7 +23,10 @@ class GitApp extends React.Component {
 
         axios.get('https://api.github.com/users/' +  text + '/repos')
         .then(res => {
-            this.setState({repos: res.data})
+            this.setState({repos: res.data, notFound: false});
+        })
+        .catch(() => {
+            this.setState({repos: [], notFound: true});
         });
 
     }
@@ -49,6 +54,8 @@ class GitApp extends React.Component {
                         style = {style.inputUser}                   
                     />
                 </View>
+
+                {this.state.notFound && <GitNotFound />}
 
                 <View style = {style.reposSection}>
                     {this.state.repos.map(repo => 

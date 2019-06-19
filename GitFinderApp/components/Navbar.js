@@ -8,11 +8,6 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 const Navbar = props => (
 
     <View style={styles.navbar}>
-        <View style={styles.navItem}>
-            <TouchableOpacity style={styles.btn} onPress={() => {props.onViewChange(2)}}>
-                <Text style={props.actView == 2 ? styles.actView : null}>Favoritos</Text>
-            </TouchableOpacity>
-        </View>
 
         <View style={styles.navItem}>
             <TouchableOpacity style={styles.btn} onPress={() => {props.onViewChange(1)}}>
@@ -21,10 +16,11 @@ const Navbar = props => (
         </View>
 
         <View style={styles.navItem}>
-            <TouchableOpacity style={styles.btn} onPress={() => {props.onViewChange(3)}}>
-                <Text style={props.actView == 3 ? styles.actView : null}>Sobre</Text>
+            <TouchableOpacity style={styles.btn} onPress={() => {props.onViewChange(2)}}>
+                <Text style={props.actView == 2 ? styles.actView : null}>Favoritos</Text>
             </TouchableOpacity>
         </View>
+        
     </View>
 
 );

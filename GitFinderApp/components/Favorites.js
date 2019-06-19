@@ -2,13 +2,15 @@ import React from 'react';
 import {View, ScrollView, Text, StyleSheet} from 'react-native';
 import axios from 'axios';
 import Repo from './Repo';
+import FavoriteError from './FavoriteError';
 
 class Favorites extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            favorites: []
+            favorites: [],
+            notFound: false
         }
 
         this.deleteFavorite = this.deleteFavorite.bind(this);
@@ -50,10 +52,10 @@ class Favorites extends React.Component {
                     repos.push(newData);
                 }
 
-                this.setState({favorites: Object.values(repos)});
-                
+                this.setState({favorites: Object.values(repos), notFound: false});
+
             } else {
-                this.setState({favorites: []});
+                this.setState({favorites: [], notFound: true});
             }  
         })
     }
@@ -84,8 +86,12 @@ class Favorites extends React.Component {
                             stars={item.data.stargazers_count}
                         />
                     )}
+
                 </View>
+
+                {this.state.notFound && <FavoriteError />}
             </ScrollView>
+
         );
     }
     
