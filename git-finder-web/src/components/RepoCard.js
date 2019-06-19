@@ -22,12 +22,12 @@ class RepoCard extends React.Component {
                     <Grid container>
                         <Grid item sm>
                             <Typography>    
-                                <i className="fas fa-code-branch"></i> {this.props.forks}
+                                <i className="fas fa-code-branch"></i> <strong>Forks: </strong> {this.props.forks}
                             </Typography>
                         </Grid>
                         <Grid item sm>
                             <Typography>
-                                <i className="fas fa-star"></i> {this.props.stars}
+                                <i className="fas fa-star"></i> <strong>Stars: </strong>{this.props.stars}
                             </Typography>
                         </Grid>
                     </Grid>
