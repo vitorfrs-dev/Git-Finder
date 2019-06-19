@@ -8,14 +8,14 @@ class ViewContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: true
+            onHomeScreen: true
         }
         this.changeView = this.changeView.bind(this);
     }
 
     changeView() {
         this.setState({
-            view: !this.state.view
+            onHomeScreen: !this.state.onHomeScreen
         })
     }
 
@@ -25,12 +25,12 @@ class ViewContainer extends React.Component {
             <div style={{marginTop: 50}}>
                 <div style={{textAlign:'center'}}>
                     <Button variant="outlined" color="primary" onClick={this.changeView}>
-                        Ver {this.state.view ? 'favoritos' : 'Repositórios'}
+                        {this.state.onHomeScreen ? 'Meus favoritos' : 'Pesquisar no Github'}
                     </Button>
                 </div>
 
-                {this.state.view  && <ReposContainer />}
-                {!this.state.view  && <FavoriteReposContainer />}
+                {this.state.onHomeScreen  && <ReposContainer />}
+                {!this.state.onHomeScreen  && <FavoriteReposContainer />}
             </div>
             </Container>
         );

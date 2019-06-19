@@ -1,7 +1,7 @@
 import React from 'react';
-import FavoriteList from './FavoriteList';
 import { RequestFavorites } from './github services/GithubFavoritos';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
+import RepoCard from './RepoCard';
 
 class FavoriteReposContainer extends React.Component {
 
@@ -10,9 +10,15 @@ class FavoriteReposContainer extends React.Component {
         this.state = {
             favoriteRepos: []
         }
+
+        this.requestApi = this.requestApi.bind(this);
     }
 
     componentDidMount() {
+       this.requestApi();
+    }
+
+    requestApi() {
         RequestFavorites().then(res => {
             this.setState({
                 favoriteRepos: res.data
@@ -46,7 +52,22 @@ class FavoriteReposContainer extends React.Component {
                     <Typography variant="h5">Repositórios Favoritos</Typography>
                 </div>
                     
-                <FavoriteList f_repos={this.state.favoriteRepos}/>
+                {/* <FavoriteList f_repos={this.state.favoriteRepos}/> */}
+
+                <Grid container spacing={2}>
+                    {this.state.favoriteRepos.map(repo => (
+                        <RepoCard
+                        remove
+                        onDelete ={this.requestApi}
+                        key={repo.id}
+                        id={repo.id} 
+                        name={repo.name} 
+                        stars={repo.stargazers_count}
+                        forks={repo.forks}
+                        desc={repo.description}
+                    />
+                    ))}
+            </Grid>
             </div>
         );
     }

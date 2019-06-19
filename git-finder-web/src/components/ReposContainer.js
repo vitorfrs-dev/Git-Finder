@@ -16,7 +16,7 @@ class ReposContainer extends React.Component {
         this.submitHandler = this.submitHandler.bind(this);
     }
 
-    inputHandler(e) { //Evento do input - altera o stado username
+    inputHandler(e) { //Evento do input - altera o estado username
         let text = e.target.value;
         this.setState({
             username: text

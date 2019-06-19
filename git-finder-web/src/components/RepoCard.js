@@ -9,7 +9,6 @@ const style = {
 
 class RepoCard extends React.Component {
     
-
     render(){
 
         return (
@@ -38,7 +37,9 @@ class RepoCard extends React.Component {
                     }}>add aos favoritos</Button>}
 
                     {this.props.remove && <Button onClick={() =>{
-                        RemoveFavorites(this.props.id).then(() => {alert('Removido dos favoritos')})
+                        RemoveFavorites(this.props.id).then(() => {
+                            this.props.onDelete();
+                        })
                     }}>Excluir</Button>}
                 </Paper>
             </Grid>
