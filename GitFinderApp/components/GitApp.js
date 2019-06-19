@@ -27,7 +27,6 @@ class GitApp extends React.Component {
     }
 
     addToFavorite(data) {
-        console.log(data);
         axios.post('https://gitapp-5d5d5.firebaseio.com/favorites.json', data)
         .then(() => {
             alert('Adicionado aos favoritos');

@@ -23,15 +23,45 @@ class Favorites extends React.Component {
     requestFavortite() {
         axios.get('https://gitapp-5d5d5.firebaseio.com/favorites.json')
         .then(res => {
-            // this.setState({favorites: res.data})
-            console.log(res);
+
+            let keys, data, repos;
+
+            repos = [];
+
+            /*  
+                Transforma a reposta do firebase em um array de objetos,
+                cada item do array terá a seguinte estrutura:
+                {  
+                    key: 'hash unico de cada registro no firebase',
+                    data: {...}
+                }
+            */
+
+            if (res.data) {                                        
+                keys = Object.keys(res.data);
+                data = Object.values(res.data);
+
+                for (let i = 0; i < keys.length; i++) {
+                    let newData = {
+                        firebaseKey: keys[i],
+                        data: data[i]
+                    }
+
+                    repos.push(newData);
+                }
+
+                this.setState({favorites: Object.values(repos)});
+                
+            } else {
+                this.setState({favorites: []});
+            }  
         })
     }
 
     deleteFavorite(id) {
-        axios.delete('https://gitapp-5d5d5.firebaseio.com/favorites.json/' + id)
+        axios.delete('https://gitapp-5d5d5.firebaseio.com/favorites/' + id + '.json')
         .then(() => {
-            requestFavortite();
+            this.requestFavortite();
         });
     }
 
@@ -46,12 +76,12 @@ class Favorites extends React.Component {
                     {this.state.favorites.map(item => 
                         <Repo
                             remove
-                            onRemoveFavorite = {this.deleteFavorite} 
-                            key={item.id}
-                            name={item.name}
-                            desc={item.description}
-                            forks={item.forks}
-                            stars={item.stargazers_count}
+                            onRemoveFavorite = {() => {this.deleteFavorite(item.firebaseKey)}} 
+                            key={item.data.id}
+                            name={item.data.name}
+                            desc={item.data.description}
+                            forks={item.data.forks}
+                            stars={item.data.stargazers_count}
                         />
                     )}
                 </View>
